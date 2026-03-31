@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Critical Error</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00; /* Green Matrix Style */
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .danger {
+            color: red;
+            font-size: 22px;
+            font-weight: bold;
+            border: 2px solid red;
+            padding: 15px;
+            margin-bottom: 20px;
+            animation: blink 0.6s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .console {
+            text-align: left;
+            font-size: 14px;
+            margin-top: 30px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="danger">
+        ⚠️ ALERTE : ACCÈS NON AUTORISÉ ⚠️<br>
+        تحذير: تم اختراق النظام بنجاح
+    </div>
+
+    <div class="console" id="log">
+        </div>
+
+    <script>
+        const messages = [
+            "Connecting to server... [OK]",
+            "Accès à la galerie photos... [100%]",
+            "جاري سحب الصور والفيديوهات... [تم]",
+            "Fetching contacts... [Found: 452]",
+            "جاري الوصول لقائمة الأسماء... [تم]",
+            "Localisation de l'appareil... [Algérie]",
+            "تحديد موقع الهاتف... [الجزائر]",
+            "Extraction des messages WhatsApp...",
+            "جاري قراءة رسائل الواتساب...",
+            "Suppression du système dans 5 secondes...",
+            "سيتم مسح بيانات الهاتف بعد 5 ثوانٍ..."
+        ];
+
+        let i = 0;
+        const logDiv = document.getElementById('log');
+
+        function showMessages() {
+            if (i < messages.length) {
+                logDiv.innerHTML += "> " + messages[i] + "<br>";
+                i++;
+                setTimeout(showMessages, 1500); 
+            } else {
+                setTimeout(() => {
+                    alert("C'est un PRANK ! 😂\nتعيشي وتاكلي غيرها، راني نتمسخر برك!");
+                    document.body.innerHTML = "<h1 style='color:white; margin-top:50px;'>😂 مـقـلـب نـاجـح 😂<br><br>C'est juste une blague !</h1>";
+                }, 2000);
+            }
+        }
+
+        showMessages();
+    </script>
+
+</body>
+</html>
